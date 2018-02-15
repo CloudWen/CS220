@@ -1,0 +1,36 @@
+part0
+	
+	real    0m0.213s
+	user    0m0.213s
+	sys     0m0.000s
+
+
+
+part1
+
+	a. The outer loop of the row-oriented algorithm can not be parallelized, since there is a loop dependence. 
+
+	b.The inner loop of the row-oriented algorithm can be parallelized, since there is no loop dependence.
+
+	c. The (second) outer loop of the column-oriented algorithm can not be parallelized, since there is a loop dependence.
+
+	d.  The inner loop of the column-oriented algorithm can be parallelized, since there is no loop dependence.
+
+	f.
+	real    0m0.201s
+	user    0m0.201s
+	sys     0m0.000s
+	speedup from part 0: 0.94366
+
+part2
+
+(i)
+	
+	real    0m0.336s
+	user    0m0.279s
+	sys     0m0.048s
+	speed up from serial code: 1.57746
+	speed up from OpenMP code: 1.67164
+(ii)
+	0.4677419 on 1024*1024 matrix
+	0.1574704 on 2048*2048 matrix

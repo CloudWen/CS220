@@ -1,0 +1,5 @@
+12:53:50 **** Clean-only build of configuration Release for project Program1 ****
+rm -rf Program1.exe src/Program1.d src/Program1.o 
+
+12:53:50 Build Finished (took 102ms)
+

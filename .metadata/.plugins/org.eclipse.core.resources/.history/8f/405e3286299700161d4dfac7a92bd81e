@@ -1,0 +1,34 @@
+	#include <stdio.h>
+	#include <unistd.h>
+	#include <pthread.h>
+	//#define NUM_LOOPS
+	#define NUM_LOOPS 30000
+	long long sum = 0;   //64 bit (or 128 bit) integer
+	pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+	void * counting_thread(void *arg){
+		int offset = *(int *) arg;  //cast arg from void * to int *
+		for (long long i = 0; i < NUM_LOOPS; i++){
+			pthread_mutex_lock(&mutex);  //lock the section of code
+			sum += offset;     // access the global variable sum
+			sleep(0.0000001);
+			pthread_mutex_unlock(&mutex);  //unlock the section of code
+		}
+		pthread_exit(NULL);   // exit the thread and return nothing
+	}
+	int main (void) { // Spawn threads
+		pthread_t id1;
+		int offset1 = 1;
+		printf("create thread 1\n");
+		pthread_create(&id1, NULL, counting_thread, &offset1);
+		pthread_t id2;
+		int offset2 = 1;
+		printf("create thread 2\n");
+		pthread_create(&id2, NULL, counting_thread, &offset2);
+		//join the threads
+		pthread_join(id1, NULL);
+		printf("join thread 1\n");
+		pthread_join(id2, NULL);
+		printf("join thread 2\n");
+		printf("Sum: %d\n", sum);   // print long long value of sum
+		return 0;
+	}

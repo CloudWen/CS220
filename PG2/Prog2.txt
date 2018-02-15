@@ -1,0 +1,27 @@
+a)
+runtime: 0.015156 seconds.
+
+b)
+
+runtime: 1.124587
+speed-up from a): 74.20078
+
+Compared with a), the speed slow significantly, since the mutex would cause threads waiting for its unlock to continue. 
+
+c)
+runtime: 0.031740
+speed-up from a): 2.094220
+speed-up from b): 0.028223
+
+It takes longer to calculate the histogramVals compared to a), since passing local copy of histogram to main to let it calculate again would add more loops which would slow down the run-time.
+However, compared to b), it takes much shorter to calculate the historgram, since there is no mutex which would block the threads and slow down the run-time.
+
+d)
+runtime: 0.030251
+speed-up from a): 1.995975
+speed-up from b): 0.026899
+speed-up from c): 0.953088
+
+It takes longer to calculate the histogramVals compared to a), since passing local copy of histogram to main to let it calculate again would add more loops which would slow down the run-time.
+It only speed up a little compared with c), since there are 4 threads now running to calculate the partial histogram to combine them as a complete one.
+compared to b), it takes much shorter to calculate the historgram, since there is no mutex which would block the threads and slow down the run-time.

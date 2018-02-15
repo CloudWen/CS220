@@ -1,0 +1,59 @@
+/*
+ ============================================================================
+ Name        : test.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <float.h>
+
+#define NUMBINS 1000
+
+int *histogramVals;
+float binSize;
+
+int calcHistogram(float* data, int numDataPoints, int numBins);
+
+int main(void) {
+
+	float rawData[1000000];
+
+	histogramVals = malloc(NUMBINS * sizeof(int));
+
+	FILE *fileIn = fopen("numbers.bin", "rb");
+	if(fileIn == NULL){
+		printf("File not opened\n");
+		return 0;
+	}
+
+	int cnt = 1000000;
+	int resultCode;
+
+	resultCode = fread(rawData, sizeof(rawData[0]), sizeof(rawData)/sizeof(rawData[0]),fileIn);
+
+	fclose(fileIn);
+
+	calcHistogram(rawData, cnt, NUMBINS);
+
+	for (int cnt1 = 0; cnt1 < NUMBINS; cnt1++){
+		printf("bin: %d binstart: %f binEnd: %f Histogram Value: %d\n", cnt1, binSize*(float)(cnt1+1), histogramVals[cnt1]);
+	}
+
+	return EXIT_SUCCESS
+}
+
+void *thread(void *vargp){
+	int *ptr = (int*)vargp;
+	pthread_exit((void*)*ptr);
+}
+
+void *thread2(void *vargp){
+	int *ptr = (int*)vargp;
+	*ptr = 0;
+	pthread_exit((void*)31);
+}

@@ -1,0 +1,8 @@
+16:19:42 **** Incremental Build of configuration Release for project test ****
+Info: Internal Builder is used for build
+mpicc -O3 -Wall -c -fmessage-length=0 -o "src\\test.o" "..\\src\\test.c" 
+Cannot run program "mpicc": Launching failed
+
+Error: Program "mpicc" not found in PATH
+PATH=[C:\MinGW\bin;C:\MinGW\msys\1.0\bin;C:\MinGW\msys\1.0\usr\bin;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\CollabNet\Subversion Client;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Java\jre7\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\pengtao\Desktop\CS110\Cloud SDK\google-cloud-sdk\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\MinGW\bin;C:\Program Files\CollabNet\Subversion Client;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Java\jre7\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\pengtao\Desktop\CS110\Cloud SDK\google-cloud-sdk\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\wbem;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\MinGW\bin;C:\MinGW;C:\Users\pengtao\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft MPI\Bin;C:/MinGW/bin;%PATH%]
+

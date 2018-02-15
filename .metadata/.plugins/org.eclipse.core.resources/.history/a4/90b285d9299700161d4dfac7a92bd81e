@@ -1,0 +1,68 @@
+/*
+ ============================================================================
+ Name        : test.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <float.h>
+
+#define NUMBINS 1000
+
+int *histogramVals;
+float binSize;
+
+int calcHistogram(float* data, int numDataPoints, int numBins);
+
+int main(void) {
+
+	float rawData[1000000];
+
+	histogramVals = malloc(NUMBINS * sizeof(int));
+
+	FILE *fileIn = fopen("numbers.bin", "rb");
+	if(fileIn == NULL){
+		printf("File not opened\n");
+		return 0;
+	}
+
+	int cnt = 1000000;
+	int resultCode;
+
+	resultCode = fread(rawData, sizeof(rawData[0]), sizeof(rawData)/sizeof(rawData[0]),fileIn);
+
+	fclose(fileIn);
+
+	calcHistogram(rawData, cnt, NUMBINS);
+
+	for (int cnt1 = 0; cnt1 < NUMBINS; cnt1++){
+		printf("bin: %d binstart: %f binEnd: %f Histogram Value: %d\n", cnt1, binSize*(float)(cnt1+1), histogramVals[cnt1]);
+	}
+
+	return EXIT_SUCCESS;
+}
+
+
+int calcHistogram (float* data, int numDataPoints, int numBins){
+	float maxVal = FLT_MIN;
+	float minVal = FLT_MAX;
+
+	for(int cnt = 0; cnt < numDataPoints; cnt++){
+		if ( data[cnt] > maxVal) maxVal = data[cnt];
+		if ( data[cnt] < minVal) minVal = data[cnt];
+	}
+
+	binSize = (maxVal-minVal)/(float)numBins;
+	printf("minVal: %f maxVal: %f binSize: %f\n", minVal, maxVal, binSize);
+
+	for(int i = 0; i<numDataPoints; i++){
+		int binNum = (int)((data[i] - minVal)/binSize);
+		histogramVals[binNum]++;
+	}
+	return 0;
+}

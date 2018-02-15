@@ -1,0 +1,33 @@
+HW3
+
+1)
+
+(a)
+	int factorial( int n ){
+		int i, ret = 1;
+		while ( i <= n ){
+			ret *= i;
+			i++;
+			}
+		return ret;
+
+(b)
+	#include <stdlib.h>
+
+	double randdouble () {
+		/*	generate random number in [0,1) */
+		double ret = (double) rand();
+		return ret / (RAND MAX+1);
+	}
+
+	int samplegeometricrv( double p ) {
+		double q;
+		int n = 0;
+		q = randdouble();
+		n++;
+		while ( q >= p ){
+			q = randdouble();
+			n++;
+			}
+		return n;
+	}

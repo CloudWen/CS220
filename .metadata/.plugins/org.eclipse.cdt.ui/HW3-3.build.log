@@ -1,0 +1,5 @@
+12:53:50 **** Clean-only build of configuration Release for project HW3-3 ****
+rm -rf src/HW3-3.d src/HW3-3.o HW3-3.exe 
+
+12:53:50 Build Finished (took 104ms)
+

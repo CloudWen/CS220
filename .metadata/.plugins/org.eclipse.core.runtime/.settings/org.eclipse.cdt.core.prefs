@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+environment/workspace/C_INCLUDE_PATH/delimiter=;
+environment/workspace/C_INCLUDE_PATH/operation=append
+environment/workspace/C_INCLUDE_PATH/value=C\:/MinGW/include
+environment/workspace/LIBRARY_PATH/delimiter=;
+environment/workspace/LIBRARY_PATH/operation=append
+environment/workspace/LIBRARY_PATH/value=C\:/MinGW/lib
+environment/workspace/PATH/delimiter=;
+environment/workspace/PATH/operation=append
+environment/workspace/PATH/value=C\:/MinGW/bin;%PATH%
+environment/workspace/append=true
+environment/workspace/appendContributed=true
+macros/workspace=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<macros/>\r\n

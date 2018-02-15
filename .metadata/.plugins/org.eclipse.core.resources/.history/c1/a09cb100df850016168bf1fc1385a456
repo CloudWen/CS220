@@ -1,0 +1,33 @@
+/*
+ ============================================================================
+ Name        : HW4.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define Mx(arg,r,c)((arg).pX[r][c])
+float ** MatAlloc(int rows, int columns);
+
+struct Matrix{
+	int rows;
+	int cols;
+	double **pX;
+};
+
+
+
+int main(void) {
+	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}
+
+
+float ** MatAlloc(int rows, int columns){
+
+}

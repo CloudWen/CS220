@@ -1,0 +1,5 @@
+12:53:50 **** Clean-only build of configuration Release for project HW4 ****
+rm -rf src/HW4.d src/HW4.o HW4.exe 
+
+12:53:50 Build Finished (took 116ms)
+

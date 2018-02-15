@@ -1,0 +1,8 @@
+1.It is guaranteed
+
+
+2.It is not guaranteed. Since after the thread tid join, exit(42) calls the main thread to exit, which is before the printf code. Thus the main() would be finished before print out 42.
+
+3.It is not guaranteed. And there is a race condition. If after create thread tid2, execute its routine first,(or create thread tid, but before execute thread tid's routine, execute thread tid2's routine first) then it would output 31. If after create thread tid2, then create thread tid, and execute thread tid's routine first, it would output 42.
+
+4.It is not guaranteed. And there is a race condition. The program would output 42, only when thread tid finish before thread tid2 execute *ptr = 0; . Any case in this condition, the program would output 42. Any case that when thread tid finish after thread tid2 execute *ptr = 0; ,  the program would output 0;

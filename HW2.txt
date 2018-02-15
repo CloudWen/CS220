@@ -1,0 +1,101 @@
+Computer Science 220
+Parallel Processing 
+Homework #2
+
+ 
+1) For your computer, determine the (i) size, (ii) minimum and (iii) maximum value of the following data types. Please specify if your machine is 32 bit or 64 bits in the answer.
+
+Machine: 32bit
+
+a) char
+
+size:1 minimum:-128 maximum:127
+ 
+b) unsigned char
+
+size:1 minimum:0 maximum:255
+ 
+c) short
+
+size:2 minimum:-32768 maximum:32767
+
+d) int
+
+size:4 minimum:-2147483648 maximum:2147483647
+ 
+e) unsigned int
+
+size:4 minimum:0 maximum:4294967295
+ 
+f) unsigned long
+ 
+size:4 minimum:0 maximum:4294967295
+
+g) float
+
+size:4 minimum:1.175494e-038  maximum:3.402823e+038
+ 
+h) double
+
+size:8 minimum:2.225075e-308 maximum:1.797693e+308
+ 
+Hint: Use sizeof() operator, limits.h and float.h header files
+ 
+ 
+ 
+2) Write logical expressions that tests whether a given character variable c is a
+ 
+lower case letter
+	
+	if(c>='a' && c<='z'){puts("YES");}else{puts("NO");}
+
+upper case letter
+
+	if (c>='A' && c<='Z'){puts("YES");}else{puts("NO");}
+digit
+
+	if (c>='0' && c<='9'){puts("YES");}else{puts("NO");}
+
+white space (includes space,tab,new line)
+
+	if(c==32 || c== 9 || c==10){puts("YES");}else{puts("NO");}
+ 
+ 
+ 
+3) Consider
+ 
+int val=0xCAFE; /*hexadecimal number corresponding to binary 1100 1010 1111 1110*/
+ 
+Write expressions using bitwise operators that do the following:
+a) test if at least three of last four bits (LSB) are onl
+
+	(((val & 0x1) + ((val & 0x2)>>1) + ((val & 0x4)>>2) + ((val & 0x8)>>3)) >= 3)?1:0;
+ 
+ 
+b) reverse the byte order (i.e., produce val=0xFECA)
+
+	val = (((val & 0xFF00)>>8) | ((val & 0x00FF)<<8))
+ 
+ 
+c) rotate fourbits (i.e., produce val=0xECAF)
+
+	val = (((val & 0x000F)<<12) | ((val &0xFFF0)>>4))
+ 
+ 
+ 
+4) Using precedence rules, evaluate the following expressions and determine the value of the varables(without running the code). Also rewrite them using parenthesis to make the order explicit.
+ 
+a) Assume ( x=0xFF33,MASK=0xFF00 ).
+Expression: c=x & MASK ==0;
+ 	c=0
+	c=(x & (MASK ==0));
+ 
+b) Assume ( x=10,y=2,z=2; ).
+Expression: z=y=x++ + ++y?2;
+ 	z=y=16
+ 	z=y=(x++ + ((++y)?2));
+
+c) Assume ( x=10,y=4,z=1; ).
+Expression: y>>= x&0x2 && z
+	y=2
+ 	y>>= ((x&0x2) && z);

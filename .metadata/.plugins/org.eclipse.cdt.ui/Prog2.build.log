@@ -1,0 +1,6 @@
+12:55:41 **** Incremental Build of configuration Release for project Prog2 ****
+Info: Internal Builder is used for build
+gcc -o Prog2.exe "src\\Prog2.o" -lpthread 
+
+12:55:41 Build Finished (took 441ms)
+

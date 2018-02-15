@@ -1,0 +1,101 @@
+/*
+ ============================================================================
+ Name        : HW4.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define Mx(arg,r,c)((arg).pX[r][c])
+
+
+struct Matrix{
+	int rows;
+	int cols;
+	double **pX;
+};
+
+struct Matrix *MatAlloc(int rows, int columns);
+void MatPrint(struct Matrix M, char messg[]);
+//void MatFree(struct Matrix M);
+
+
+int main(void) {
+
+	struct Matrix* m1 = MatAlloc(2,2);
+//	struct Matrix* pm1 = MatAlloc(2,2);
+
+	Mx(*m1,0,0) = 1;
+	Mx(*m1,0,1) = 2;
+	Mx(*m1,1,0) = 3;
+	Mx(*m1,1,1) = 5;
+
+	MatPrint(*m1, "c");
+
+
+//	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	return EXIT_SUCCESS;
+}
+
+
+
+void MatPrint(struct Matrix M, char messg[]){
+	int r,c;
+	printf("%s\n", messg);
+
+	for(r=0; r<M.rows; r++){
+		for(c=0; c<M.cols; c++){
+			printf("%7.3lf", Mx(M,r,c));
+		}
+		printf("\n");
+	}
+}
+
+struct Matrix *MatAlloc(int rows, int columns){
+
+	struct Matrix *m = malloc(sizeof(struct Matrix));
+
+	m->rows = rows;
+	m->cols = columns;
+
+	double **a;
+	a = malloc(rows * sizeof (float *));
+	for(int i = 0; i<columns; i++){
+		a[i] = malloc(columns * sizeof(float));
+	}
+
+	m->pX = a;
+
+//	struct Matrix* m = malloc(sizeof *m);
+//	m = {rows, columns, a};
+
+
+	return m;
+}
+
+void MatFree(struct Matrix M){
+
+	double **b = M.pX;
+	for(int i = 0; i<M.cols; i++){
+		free(b[i]);
+	}
+	free(b);
+
+
+
+//	int r,c;
+//	for(r=M.rows-1; r>=0; r--){
+//		for (c=M.cols-1; c>=0; c--){
+//			free(M.pX[r][c]);
+//		}
+//		free(M.pX[r]);
+//	}
+//	free(M.pX);
+//	free(M);
+}
+
